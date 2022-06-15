@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FLASK - Sentiment Analysis Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+	<script>
+	function goBack() {
+	  window.history.back();
+	}
+	</script>
+	
+	
+	
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="heading">
+			Sentiment Analysis NLP
+		</div>
+		<h2>Analyze Amazon product reviews as positive or negative</h2>
+		
+	</div>
+	</header>
+	
+	<div class="results">
+		
+		{% if predictedVal == "0" %}
+		
+		<h2 style="color:red;">The review is negative 😔</h2>
+		
+		{% elif predictedVal == "1" %}
+		<h2 style="color:#00ff00;">The review is positive 😀</h2>
+		{% endif %}
+		
+		{{ dataProb | safe }}
+		
+	
+	</div>
+	
+	<button onclick="goBack()" class="btn-info">Go Back</button>
+
+</body>
+</html>
